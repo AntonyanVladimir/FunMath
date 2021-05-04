@@ -1,0 +1,17 @@
+﻿@model FunMath.ViewModels.LevelsViewModel
+@{
+    ViewData["Title"] = "AddTask";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Add Aufgaben</h2>
+    <form method="post" asp-controller="ManageData" asp-action="SaveTask">
+        Level: <select asp-items="Model.Levels" name="levelNumber" class="form-control"></select> <br>
+        ChallengeText: <textarea type="text" name="challengeText" class="form-control"></textarea><br><br>
+        Solution: <input type="text" name="solution" class="form-control" />
+
+        <input class="btn btn-primary mt-3" type="submit" value="Submit">
+    </form>
+</div>
+

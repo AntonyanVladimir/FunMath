@@ -9,6 +9,9 @@ namespace FunMath.Models
         public int Id { get; set; }
         public int LevelNumber { get; set; }
         public List<Challenge> Challenges { get; set; }
-
+        public Level()
+        {
+            Challenges = new List<Challenge>();
+        }
     }
 }
