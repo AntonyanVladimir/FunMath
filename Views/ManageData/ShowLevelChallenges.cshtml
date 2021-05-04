@@ -1,0 +1,37 @@
+﻿@model Level
+@{
+    ViewData["Title"] = "ShowLevelChallenges";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Aufgaben von Level @Model.LevelNumber</h2>
+    @if (Model.Challenges.Count == 0)
+    {
+        <p class="badge badge-info">Es sind momentan noch keine Aufgaben in diesem Level.</p>
+    }
+    else
+    {
+        <ul class="list-group">
+            @foreach (var challenge in Model.Challenges)
+            {
+                <li class="list-group-item">
+                    <div class="card">
+                        <div class="card-header">
+                            Aufgaben Title
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">@challenge.ChallengeText</h5>
+                            <p class="card-text">Richtige Antwort: <span class="badge badge-success">@challenge.Solution</span></p>
+                            <a class="btn btn-primary" asp-controller="ManageData" asp-action="EditTask" asp-route-id="@challenge.Id">Bearbeiten</a>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+<div class="mt-4">
+    <a class="btn btn-primary" asp-controller="ManageData" asp-action="ShowTasks">Zurück</a>
+</div>
+</div>
+

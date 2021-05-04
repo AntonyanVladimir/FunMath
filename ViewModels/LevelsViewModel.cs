@@ -10,7 +10,8 @@ namespace FunMath.ViewModels
     public class LevelsViewModel
     {
         public IEnumerable<SelectListItem> Levels { get; private set; }
-        public LevelsViewModel(List<Level> levels)
+        
+        public LevelsViewModel(IEnumerable<Level> levels)
         {
             Levels = levels.Select(x =>
                                   new SelectListItem()

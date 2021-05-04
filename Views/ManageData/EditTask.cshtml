@@ -1,0 +1,26 @@
+﻿@model FunMath.ViewModels.EditChallengeViewModel
+@{
+    ViewData["Title"] = "EditTask";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>EditTask</h2>
+    <form method="post" asp-controller="ManageData" asp-action="SaveEditedTask">
+        Level: <select name="levelNumber" asp-for="LevelNumber" class="form-control">
+            @for (var x = 1; x <= 10; x++)
+            {
+                <option>@x</option>
+            }
+        </select> <br>
+        ChallengeText: <textarea type="text" name="challengeText" class="form-control" asp-for="ChallengeText"></textarea><br><br>
+        Solution: <input type="text" name="solution" class="form-control" asp-for="Solution" />
+        <input type="hidden" name="id" class="form-control" asp-for="Id" />
+        <input class="btn btn-primary mt-3" type="submit" value="Speichern">  
+        <a  class="btn btn-primary mt-3" asp-controller="ManageData" asp-action="ShowTasks">Zurück</a>
+
+    </form>
+</div>
+
+
+
