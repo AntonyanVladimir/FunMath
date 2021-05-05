@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-4">
+<div class="welcome p-5">
     <h2>Add Aufgaben</h2>
     <form method="post" asp-controller="ManageData" asp-action="SaveTask">
         Level: <select asp-items="Model.Levels" name="levelNumber" class="form-control"></select> <br>
