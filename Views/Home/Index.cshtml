@@ -1,8 +1,9 @@
-﻿@{
+﻿@model FunMath.ViewModels.RegisterViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="card text-white welcome p-5">
+@*<div class="card text-white welcome p-5">
     <img class="card-img" src="https://cdn.pixabay.com/photo/2016/01/23/16/34/raccoon-1157728_1280.png" alt="Owl">
     <div class=" p-5" >
         <h5 class="card-title"></h5>
@@ -13,7 +14,7 @@
             <a class="btn btn-block btn-dark mb-2">Division</a>
         </div>
     </div>
-</div>
+</div>*@
 @*<div class="mt-4 welcome p-5">
     <div class="text-white">
         <a class="btn btn-block btn-dark mb-2 ">Addition</a>
@@ -22,3 +23,11 @@
         <a class="btn btn-block btn-dark mb-2">Division</a>
     </div>
 </div>*@
+
+<div class="container mt-4">
+    <form asp-controller="Account" asp-action="register" method="post">
+       Username: <input asp-for="Username" class="form-control"/>
+       Password: <input asp-for="Password" class="form-control"/>
+        <input type="submit" class="btn btn-primary">
+    </form>
+</div>

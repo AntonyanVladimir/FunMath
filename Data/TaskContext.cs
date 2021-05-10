@@ -15,6 +15,7 @@ namespace FunMath.Data
         }
         public DbSet<Level> Levels { get; set; }
         public DbSet<Challenge> Challenges { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
 
     }
 }
