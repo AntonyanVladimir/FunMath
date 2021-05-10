@@ -433,3 +433,4 @@ C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views\ManageData\ShowTasks.cshtml.g.cs
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views\ManageData\ShowLevelChallenges.cshtml.g.cs
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views\ManageData\EditTask.cshtml.g.cs
+C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
