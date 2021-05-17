@@ -1,6 +1,7 @@
 ﻿using FunMath.Data;
 using FunMath.Models;
 using FunMath.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace FunMath.Controllers
 {
+    [Area("Admin")]
+    //[Authorize(Roles = "Admin")]
     public class ManageDataController : Controller
     {
         private readonly TaskContext _context;
@@ -21,6 +24,8 @@ namespace FunMath.Controllers
         }
         public IActionResult AddTask()
         {
+            var currentUser = User.IsInRole("Admin");
+            
             var viewModel = new LevelsViewModel(_levels);
             return View(viewModel);
         }

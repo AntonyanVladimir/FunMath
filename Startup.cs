@@ -32,7 +32,8 @@ namespace FunMath
         {
             services.AddScoped<ITokenService, TokenService>();
             services.AddDbContext<TaskContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllersWithViews();
+            //services.AddControllersWithViews();
+            services.AddMvc(o=>o.EnableEndpointRouting = false);
             services.AddCors(o => o.AddPolicy("StandardPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
@@ -75,11 +76,19 @@ namespace FunMath
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //});
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
+                routes.MapRoute("areaRoute", "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
+                routes.MapRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

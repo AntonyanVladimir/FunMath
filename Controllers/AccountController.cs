@@ -23,6 +23,7 @@ namespace FunMath.Controllers
         {
             _taskContext = tasContext;
             _tokenService = tokenService;
+           
         }
         [HttpPost]
         public async Task<ActionResult<UserViewModel>> Register([FromForm] RegisterViewModel model)
@@ -37,8 +38,12 @@ namespace FunMath.Controllers
                 Username = model.Username.ToLower(),
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(model.Password)),
                 PasswordSalt = hmac.Key,
-                Age = model.Age
+                Age = model.Age,
+                Role = "Admin"
+                
             };
+            if (string.IsNullOrEmpty(user.Role))
+                user.Role = "Player";
 
             _taskContext.AppUsers.Add(user);
             await _taskContext.SaveChangesAsync();
@@ -47,6 +52,7 @@ namespace FunMath.Controllers
             //    Username = user.Username,
             //    Token = _tokenService.CreateToken(user)
             //};
+            
             return RedirectToAction("Startseite", "Home");
         }
         [HttpPost]

@@ -1,5 +1,7 @@
-﻿using FunMath.Models;
+﻿using FunMath.Data;
+using FunMath.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,9 +14,12 @@ namespace FunMath.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        readonly TaskContext _taskContext;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, TaskContext taskContext)
         {
+            _taskContext = taskContext;
             _logger = logger;
         }
 
@@ -35,7 +40,11 @@ namespace FunMath.Controllers
         }
         public IActionResult Startseite()
         {
-            return View();
+            var _levels = _taskContext.Levels
+               .AsNoTracking()
+               .ToList();
+
+            return View(_levels);
         }
     }
 }

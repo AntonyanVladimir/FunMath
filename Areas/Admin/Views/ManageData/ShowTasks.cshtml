@@ -1,4 +1,4 @@
-﻿@model List<Level>
+﻿@model List<FunMath.Models.Level>
 @{
     ViewData["Title"] = "ShowTasks";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,11 +17,11 @@
             @foreach (var level in Model)
             {
                 <tr>
-                    <td >
+                    <td>
                         <a class="btn btn-block btn-info" asp-controller="ManageData" asp-action="ShowLevelChallenges" asp-route-id="@level.Id">Level @level.LevelNumber</a>
                     </td>
                     <td>
-                        <a class="btn btn-block btn-danger" asp-controller="ManageData" asp-action="DeleteLevelWithChallenges" asp-route-id="@level.Id">Löschen</a>
+                        <a class="btn btn-block btn-danger" asp-area="Admin" asp-controller="ManageData" asp-action="DeleteLevelWithChallenges" asp-route-id="@level.Id">Löschen</a>
                     </td>
                 </tr>
             }
