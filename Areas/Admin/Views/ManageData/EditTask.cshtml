@@ -1,4 +1,5 @@
 ﻿@model FunMath.ViewModels.EditChallengeViewModel
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
 @{
     ViewData["Title"] = "EditTask";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,8 +17,8 @@
         ChallengeText: <textarea type="text" name="challengeText" class="form-control" asp-for="ChallengeText"></textarea><br><br>
         Solution: <input type="text" name="solution" class="form-control" asp-for="Solution" />
         <input type="hidden" name="id" class="form-control" asp-for="Id" />
-        <input class="btn btn-primary mt-3" type="submit" value="Speichern">  
-        <a  class="btn btn-primary mt-3" asp-controller="ManageData" asp-action="ShowTasks">Zurück</a>
+        <input class="btn btn-primary mt-3" type="submit" value="Speichern">
+        <a class="btn btn-primary mt-3" asp-controller="ManageData" asp-action="ShowTasks">Zurück</a>
 
     </form>
 </div>

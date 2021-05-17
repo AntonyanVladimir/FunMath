@@ -1,11 +1,13 @@
 ﻿@model List<FunMath.Models.Level>
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
 @{
     ViewData["Title"] = "ShowTasks";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container welcome">
+<div class="container mt-4 welcome">
     <h2 class="mb-2">Levels</h2>
+
     <table>
         <thead>
             <tr>
