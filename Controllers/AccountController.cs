@@ -18,6 +18,7 @@ namespace FunMath.Controllers
     {
         private readonly ITokenService _tokenService;
         private readonly TaskContext _taskContext;
+
         public AccountController(TaskContext tasContext, ITokenService tokenService)
         {
             _taskContext = tasContext;
@@ -35,19 +36,21 @@ namespace FunMath.Controllers
             {
                 Username = model.Username.ToLower(),
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(model.Password)),
-                PasswordSalt = hmac.Key
+                PasswordSalt = hmac.Key,
+                Age = model.Age
             };
 
             _taskContext.AppUsers.Add(user);
             await _taskContext.SaveChangesAsync();
-            return new UserViewModel() 
-            {
-                Username = user.Username,
-                Token = _tokenService.CreateToken(user)
-            };
+            //return new UserViewModel() 
+            //{
+            //    Username = user.Username,
+            //    Token = _tokenService.CreateToken(user)
+            //};
+            return RedirectToAction("Startseite", "Home");
         }
         [HttpPost]
-        public async Task<ActionResult<UserViewModel>> Login([FromForm]LoginViewModel loginViewModel)
+        public async Task<ActionResult<UserViewModel>> Login([FromForm] LoginViewModel loginViewModel)
         {
             var user = await _taskContext.AppUsers.SingleOrDefaultAsync(m => m.Username == loginViewModel.Username);
 
@@ -63,12 +66,8 @@ namespace FunMath.Controllers
                 if (computedHash[i] != user.PasswordHash[i])
                     return Unauthorized("Invalid Password");
             }
-            return new UserViewModel()
-            {
-                Username = user.Username,
-                Token = _tokenService.CreateToken(user)
-            };
 
+            return RedirectToAction("Startseite", "Home");
         }
         private async Task<bool> UserExists(string username)
         {

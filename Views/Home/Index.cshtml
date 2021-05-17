@@ -2,32 +2,8 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-@*<div class="card text-white welcome p-5">
-        <img class="card-img" src="https://cdn.pixabay.com/photo/2016/01/23/16/34/raccoon-1157728_1280.png" alt="Owl">
-        <div class=" p-5" >
-            <h5 class="card-title"></h5>
-            <div class="text-white">
-                <a class="btn btn-block btn-dark mb-2 ">Addition</a>
-                <a class="btn btn-block btn-dark mb-2">Substraktion</a>
-                <a class="btn btn-block btn-dark mb-2">Multiplikation</a>
-                <a class="btn btn-block btn-dark mb-2">Division</a>
-            </div>
-        </div>
-    </div>*@
-@*<div class="mt-4 welcome p-5">
-        <div class="text-white">
-            <a class="btn btn-block btn-dark mb-2 ">Addition</a>
-            <a class="btn btn-block btn-dark mb-2">Substraktion</a>
-            <a class="btn btn-block btn-dark mb-2">Multiplikation</a>
-            <a class="btn btn-block btn-dark mb-2">Division</a>
-        </div>
-    </div>*@
-
-
-
 <div class="text-center m-5 p-5">
-    <form class="form-signin d-inline-block align-middle">
+    <form class="form-signin align-middle" asp-controller="Account" asp-action="Login" id="loginForm">
         <img class="mb-4 rounded-circle border border-success" src="https://cdn.pixabay.com/photo/2014/04/05/11/39/people-316506_1280.jpg" alt="" width="100" height="auto">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="benutzername" class="sr-only">Email address</label>
@@ -39,9 +15,42 @@
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
-        <p class="mt-5 mb-3 text-muted">© 2017-2019</p>
+        <button class="btn btn-lg btn-primary btn-block mb-2" type="submit">Anmelden</button>
+    </form>
+    <button class="btn btn-lg btn-success btn-block" id="registerBtn">Sich Registrieren</button>
+    <p class="mt-5 mb-3 text-muted">© 2017-2021</p>
+
+    <form class="form-signin align-middle d-none" asp-controller="Account" asp-action="Register" id="registerForm">
+        <img class="mb-4 rounded-circle border border-success" src="https://cdn.pixabay.com/photo/2014/04/05/11/39/people-316506_1280.jpg" alt="" width="100" height="auto">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="benutzername" class="sr-only">Email address</label>
+        <input type="text" asp-for="Username" id="username" class="form-control mb-2" placeholder="Benutzername" required="" autofocus="" />
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" asp-for="Password" id="password" class="form-control mb-2" placeholder="Passwort" required="" autofocus="" />
+        <label for="inputAge" class="sr-only">Password</label>
+        <input type="number" asp-for="Age" id="inputAge" class="form-control mb-2" required="" autofocus="" min="3" max="102" placeholder="Wie alt bist du?"/>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <p class="mt-5 mb-3 text-muted">© 2017-2021</p>
     </form>
 </div>
+
+@section Scripts{
+    <script>
+        let registerBtn = document.getElementById("registerBtn");
+        let loginForm = document.getElementById("loginForm");
+        let registerForm = document.getElementById("registerForm");
+
+        registerBtn.addEventListener("click", () => {
+            loginForm.classList.add("d-none");
+            registerForm.classList.remove("d-none");
+            registerBtn.classList.add("d-none");
+        })
+    </script>
+}
 
 
