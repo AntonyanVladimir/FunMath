@@ -25,7 +25,7 @@ namespace FunMath.Controllers
         public IActionResult AddTask()
         {
             var currentUser = User.IsInRole("Admin");
-            
+
             var viewModel = new LevelsViewModel(_levels);
             return View(viewModel);
         }
@@ -65,9 +65,9 @@ namespace FunMath.Controllers
         }
         public IActionResult ShowLevelChallenges(int id)
         {
-            Level level = _context.Levels.Include(m=>m.Challenges)
+            Level level = _context.Levels.Include(m => m.Challenges)
                         .FirstOrDefault(m => m.Id == id);
-            if(level == null)
+            if (level == null)
                 return BadRequest("Level fehlt.");
 
             return View(level);
@@ -103,6 +103,14 @@ namespace FunMath.Controllers
             _context.SaveChanges();
 
             return RedirectToAction(nameof(ShowTasks));
+        }
+        public IActionResult DeleteTask(int taskId, int levelId)
+        {
+            var task = _context.Challenges.FirstOrDefault(m => m.Id == taskId);
+            _context.Challenges.Remove(task);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(ShowLevelChallenges), new { id = levelId });
         }
 
     }

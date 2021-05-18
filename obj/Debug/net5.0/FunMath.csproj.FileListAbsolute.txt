@@ -438,3 +438,4 @@ C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\FunMath.gen
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\FunMath.csprojAssemblyReference.cache
+C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views\InGame\LevelCompleted.cshtml.g.cs

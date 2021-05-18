@@ -1,5 +1,6 @@
 ﻿using FunMath.Data;
 using FunMath.Models;
+using FunMath.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,15 +17,49 @@ namespace FunMath.Controllers
         {
             _context = context;
         }
-        public IActionResult LoadLevel(int levelId, int challengeNummer)
+        public IActionResult LoadLevel(int levelNumber, int challengeIndex)
         {
 
             Level level = _context.Levels.Include(m => m.Challenges)
-                        .FirstOrDefault(m => m.LevelNumber == challengeNummer);
+                        .FirstOrDefault(m => m.LevelNumber == levelNumber);
             var challenges = level.Challenges;
-            var currentChallenge = challenges[challengeNummer-1];
 
-            return View(currentChallenge);
+            if (challenges.Count > challengeIndex - 1)
+            {
+                Challenge currentChallenge = challenges[challengeIndex - 1];
+
+                var vm = new CurrentChallengeViewModel()
+                {
+                    ChallengeText = currentChallenge.ChallengeText,
+                    LevelNumber = currentChallenge.LevelNumber,
+                    Solution = currentChallenge.Solution,
+                    Index = challengeIndex
+                };
+
+                return View(vm);
+
+            }
+            return RedirectToAction(nameof(LevelCompleted));
         }
+        [HttpPost]
+        public IActionResult CheckAntwort([FromForm] CurrentChallengeViewModel currentChallenge)
+        {
+            if (currentChallenge is null)
+            {
+                throw new ArgumentNullException(nameof(currentChallenge));
+            }
+
+            if (currentChallenge.Solution == currentChallenge.UserAntwort)
+            {
+                return RedirectToAction(nameof(LoadLevel), new { levelNumber = currentChallenge.LevelNumber, challengeIndex = ++currentChallenge.Index });
+            }
+
+            return null;
+        }
+        public IActionResult LevelCompleted()
+        {
+            return View();
+        }
+
     }
 }

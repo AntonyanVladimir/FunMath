@@ -25,11 +25,15 @@
                             <h5 class="card-title">@challenge.ChallengeText</h5>
                             <p class="card-text">Richtige Antwort: <span class="badge badge-success">@challenge.Solution</span></p>
                             <a class="btn btn-primary" asp-controller="ManageData" asp-action="EditTask" asp-route-id="@challenge.Id">Bearbeiten</a>
+                            <a class="btn btn-danger" asp-controller="ManageData" asp-action="DeleteTask" asp-route-taskId="@challenge.Id" asp-route-levelId="@challenge.LevelId">Löschen</a>
                         </div>
                     </div>
                 </li>
+
             }
         </ul>
+       
+            <a class="nav-link" asp-area="Admin" asp-controller="ManageData" asp-action="AddTask"> <i class="fas fa-plus"></i> AddTask</a>
     }
     <div class="mt-4">
         <a class="btn btn-primary" asp-controller="ManageData" asp-action="ShowTasks">Zurück</a>

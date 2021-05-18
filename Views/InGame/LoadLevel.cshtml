@@ -1,16 +1,38 @@
-﻿@model Challenge
+﻿@model FunMath.ViewModels.CurrentChallengeViewModel
 @{
     ViewData["Title"] = "LoadLevel";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container mt-4">
-    <p> Frage: @Model.ChallengeText </p>
-    Antwort: <input class="mt-4" style="width:3em"/>
-
-    <a class="btn btn-success"> Check </a>
+    ChallengeText = currentChallenge.ChallengeText,
+    LevelNumber = currentChallenge.LevelNumber,
+    Solution = currentChallenge.Solution,
+    Index = challengeNummer
+    <form asp-controller="InGame" asp-action="CheckAntwort">
+        <p> Frage: @Model.ChallengeText </p>
+        Antwort: <input class="mt-4" asp-for="UserAntwort" style="width:3em" id="userAntwort" />
+        <input asp-for="Solution" type="hidden" id="challengeSolution" />
+        <input asp-for="Index" type="hidden" />
+        <input asp-for="LevelNumber" type="hidden"/>
+        <input class="btn btn-success" type="submit" value="Check"> 
+    </form>
 </div>
 <div>
     Test ergebnis
 </div>
 
+@section Scripts{
+    <script>
+        const checkAnswerBtn = document.getElementById("checkAnswerBtn");
+        const userAntwort = document.getElementById("userAntwort");
+        const challengeSolution = document.getElementById("challengeSolution");
+        checkAnswer.addEventListener("click",)
+
+        function checkAnswer() {
+            if (userAntwort.nodeValue === challengeSolution.value)
+                location.href = "/InGame/LoadLevel?levelId=1&challengeNummer=1"
+        }
+
+    </script>
+}

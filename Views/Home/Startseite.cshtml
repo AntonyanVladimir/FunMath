@@ -12,7 +12,7 @@
         <div class="text-white">
             @foreach (var level in Model)
             {
-                <a class="btn btn-block btn-dark mb-2 " asp-controller="InGame" asp-action="LoadLevel" asp-route-levelId="@level.LevelNumber" asp-route-challengeNummer="1">Level: <b>@level.LevelNumber</b></a>
+                <a class="btn btn-block btn-dark mb-2 " asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@level.LevelNumber" asp-route-challengeIndex="1">Level: <b>@level.LevelNumber</b></a>
             }
         </div>
     </div>
