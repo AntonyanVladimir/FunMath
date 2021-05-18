@@ -77,5 +77,10 @@ body {
     height: 100vh;
     
 }
+.startImage{
+    width:100px;
+    height:auto;
+
+}
 
 /*register Form*/

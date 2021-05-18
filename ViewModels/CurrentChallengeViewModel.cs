@@ -13,5 +13,6 @@ namespace FunMath.ViewModels
         public int LevelNumber { get; set; }
         public int Index { get; set; }
         public string UserAntwort { get; set; }
+        public int LevelChallengesCount { get; set; }
     }
 }

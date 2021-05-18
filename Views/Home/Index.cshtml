@@ -4,7 +4,7 @@
 }
 <div class="text-center m-5 p-5">
     <form class="form-signin align-middle" asp-controller="Account" asp-action="Login" id="loginForm">
-        <img class="mb-4 rounded-circle border border-success" src="https://cdn.pixabay.com/photo/2014/04/05/11/39/people-316506_1280.jpg" alt="" width="100" height="auto">
+        <img class="mb-4 border border-success rounded-circle startImage" src="https://cdn.pixabay.com/photo/2014/04/05/11/39/people-316506_1280.jpg" alt="">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="benutzername" class="sr-only">Email address</label>
         <input type="text" asp-for="Username" id="username" class="form-control mb-2" placeholder="Benutzername" required="" autofocus="" />
@@ -16,19 +16,19 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block mb-2" type="submit">Anmelden</button>
+        <p class="mt-5 mb-3 text-muted">© 2017-2021</p>
     </form>
     <button class="btn btn-lg btn-success btn-block" id="registerBtn">Sich Registrieren</button>
-    <p class="mt-5 mb-3 text-muted">© 2017-2021</p>
 
     <form class="form-signin align-middle d-none" asp-controller="Account" asp-action="Register" id="registerForm">
-        <img class="mb-4 rounded-circle border border-success" src="https://cdn.pixabay.com/photo/2014/04/05/11/39/people-316506_1280.jpg" alt="" width="100" height="auto">
+        <img class="mb-4 rounded-circle border border-success startImage" src="https://cdn.pixabay.com/photo/2014/04/05/11/39/people-316506_1280.jpg" alt="">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="benutzername" class="sr-only">Email address</label>
         <input type="text" asp-for="Username" id="username" class="form-control mb-2" placeholder="Benutzername" required="" autofocus="" />
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" asp-for="Password" id="password" class="form-control mb-2" placeholder="Passwort" required="" autofocus="" />
         <label for="inputAge" class="sr-only">Password</label>
-        <input type="number" asp-for="Age" id="inputAge" class="form-control mb-2" required="" autofocus="" min="3" max="102" placeholder="Wie alt bist du?"/>
+        <input type="number" asp-for="Age" id="inputAge" class="form-control mb-2" required="" autofocus="" min="3" max="102" placeholder="Wie alt bist du?" />
         <div class="checkbox mb-3">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me

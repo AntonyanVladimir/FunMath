@@ -1,11 +1,14 @@
 ﻿using FunMath.Data;
 using FunMath.Models;
 using FunMath.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace FunMath.Controllers
@@ -13,8 +16,9 @@ namespace FunMath.Controllers
     public class InGameController : Controller
     {
         readonly TaskContext _context;
-        public InGameController(TaskContext context)
+        public InGameController(TaskContext context, IHttpContextAccessor httpContextAccessor)
         {
+            var userName = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
             _context = context;
         }
         public IActionResult LoadLevel(int levelNumber, int challengeIndex)
@@ -33,7 +37,9 @@ namespace FunMath.Controllers
                     ChallengeText = currentChallenge.ChallengeText,
                     LevelNumber = currentChallenge.LevelNumber,
                     Solution = currentChallenge.Solution,
-                    Index = challengeIndex
+                    Index = challengeIndex,
+                    LevelChallengesCount = level.Challenges.Count
+
                 };
 
                 return View(vm);

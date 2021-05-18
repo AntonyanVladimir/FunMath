@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,5 +14,6 @@ namespace FunMath.Models
         public byte[] PasswordSalt { get; set; }
         public int Age { get; set; }
         public string Role { get; set; }
+
     }
 }
