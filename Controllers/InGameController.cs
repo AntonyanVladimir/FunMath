@@ -18,7 +18,8 @@ namespace FunMath.Controllers
         readonly TaskContext _context;
         public InGameController(TaskContext context, IHttpContextAccessor httpContextAccessor)
         {
-            var userName = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+            var httpContext = httpContextAccessor.HttpContext;
+            var claimsPrincipal = httpContext.User;
             _context = context;
         }
         public IActionResult LoadLevel(int levelNumber, int challengeIndex)

@@ -78,9 +78,12 @@ body {
     
 }
 .startImage{
-    width:100px;
     height:auto;
-
+    width:100px;
+}
+.levelCompleteImg{
+    height:20rem;
+    width:auto;
 }
 
 /*register Form*/

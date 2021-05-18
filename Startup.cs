@@ -2,6 +2,7 @@ using FunMath.Data;
 using FunMath.Interfaces;
 using FunMath.Models;
 using FunMath.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,15 +37,17 @@ namespace FunMath
             services.AddScoped<ITokenService, TokenService>();
             services.AddDbContext<TaskContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddControllersWithViews();
-            services.AddMvc(o=>o.EnableEndpointRouting = false);
+
+            services.AddMvc(o => o.EnableEndpointRouting = false);
             services.AddCors(o => o.AddPolicy("StandardPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-            services.AddHttpContextAccessor();
 
+            services.AddHttpContextAccessor();
+           
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -55,7 +58,7 @@ namespace FunMath
                         ValidateIssuer = false,
                         ValidateAudience = false,
                     };
-                });
+                }).AddCookie("Identity.Application");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

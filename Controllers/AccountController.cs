@@ -79,12 +79,12 @@ namespace FunMath.Controllers
                     return Unauthorized("Invalid Password");
             }
 
-            //var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
-            //identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
-            //identity.AddClaim(new Claim(ClaimTypes.Name, user.Username));
-           
-            //await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
-            //    new ClaimsPrincipal(identity));
+            var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
+            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, "TestId"));
+            identity.AddClaim(new Claim(ClaimTypes.Name, user.Username));
+
+            await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
+                new ClaimsPrincipal(identity));
 
             return RedirectToAction("Startseite", "Home");
         }
