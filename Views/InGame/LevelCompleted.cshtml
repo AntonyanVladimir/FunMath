@@ -1,4 +1,4 @@
-﻿
+﻿@model int
 @{
     ViewData["Title"] = "LevelCompleted";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,8 +13,8 @@
     <div class="text-center mt-4">
         <img src="https://cdn.pixabay.com/photo/2021/02/20/03/04/success-6032148_1280.jpg" class="levelCompleteImg" />
     </div>
-    <div>
-        <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="2" asp-route-challengeIndex="1">Next Level</a>
+    <div class="text-center mt-4">
+        <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model">Next Level</a>
     </div>
 </div>
 

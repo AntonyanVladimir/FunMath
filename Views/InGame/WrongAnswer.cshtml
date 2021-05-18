@@ -1,0 +1,17 @@
+﻿@model FunMath.ViewModels.CurrentChallengeViewModel
+@{
+    ViewData["Title"] = "WrongAnswer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4 bg-light vh-100">
+    <h3 class="mt-4 mb-4 text-center">Leider Falsche Antwort!</h3>
+    <div class="text-center mt-4">
+        <img src="https://cdn.pixabay.com/photo/2012/05/07/02/13/cancel-47588_1280.png" class="levelCompleteImg" />
+    </div>
+    <div class="text-center mt-4">
+        <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.LevelNumber" asp-route-challengeIndex="@Model.Index" >Erneut vesuchen</a>
+        <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.LevelNumber" asp-route-challengeIndex="@(Model.Index+1)">Überspringen</a>
+    </div>
+</div>
+

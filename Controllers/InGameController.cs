@@ -29,9 +29,9 @@ namespace FunMath.Controllers
                         .FirstOrDefault(m => m.LevelNumber == levelNumber);
             var challenges = level.Challenges;
 
-            if (challenges.Count > challengeIndex - 1)
+            if (challenges.Count > challengeIndex)
             {
-                Challenge currentChallenge = challenges[challengeIndex - 1];
+                Challenge currentChallenge = challenges[challengeIndex];
 
                 var vm = new CurrentChallengeViewModel()
                 {
@@ -46,7 +46,7 @@ namespace FunMath.Controllers
                 return View(vm);
 
             }
-            return RedirectToAction(nameof(LevelCompleted));
+            return RedirectToAction(nameof(LevelCompleted), new { nextLevelNumber = levelNumber + 1 });
         }
         [HttpPost]
         public IActionResult CheckAntwort([FromForm] CurrentChallengeViewModel currentChallenge)
@@ -61,12 +61,16 @@ namespace FunMath.Controllers
                 return RedirectToAction(nameof(LoadLevel), new { levelNumber = currentChallenge.LevelNumber, challengeIndex = ++currentChallenge.Index });
             }
 
-            return null;
+            return RedirectToAction(nameof(WrongAnswer), currentChallenge);
         }
-        public IActionResult LevelCompleted()
+        public IActionResult LevelCompleted(int nextLevelNumber)
         {
-            return View();
+            return View(nextLevelNumber);
         }
+        public IActionResult WrongAnswer(CurrentChallengeViewModel currentChallenge)
+        {
 
+            return View(currentChallenge);
+        }
     }
 }

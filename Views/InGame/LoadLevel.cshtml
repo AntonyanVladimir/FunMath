@@ -5,14 +5,14 @@
 }
 <div class="container mt-4">
     <div class="badge badge-info p-2 float-right">
-        Punkte: @(Model.Index-1) von @Model.LevelChallengesCount
+        Punkte: @Model.Index von @Model.LevelChallengesCount
     </div>
     <form asp-controller="InGame" asp-action="CheckAntwort">
         <div class="p-5 bg-light border-primary rounded ">
             <p> Frage: @Model.ChallengeText </p>
         </div>
         <div class="mt-4">
-            Antwort: <input class="form-control d-inline-block" asp-for="UserAntwort" style="width:5em" id="userAntwort" />
+            Antwort: <input class="form-control d-inline-block" asp-for="UserAntwort" style="width:5em" id="userAntwort" autocomplete="off" />
             <input asp-for="Solution" type="hidden" id="challengeSolution" />
             <input asp-for="Index" type="hidden" />
             <input asp-for="LevelNumber" type="hidden" />
