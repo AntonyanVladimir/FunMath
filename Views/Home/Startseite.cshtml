@@ -4,14 +4,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="card text-white welcome p-5">
-    <img class="card-img" src="https://cdn.pixabay.com/photo/2016/01/23/16/34/raccoon-1157728_1280.png" alt="Owl">
-    <div class="p-5">
+<div class="text-white welcome p-5 text-center">
+    <img class="startImage" src="https://cdn.pixabay.com/photo/2016/01/23/16/34/raccoon-1157728_1280.png" alt="Owl">
+    <div class="">
         <h5 class="card-title"></h5>
-        <div class="text-white p-3 d-inline-block">
+        <div class="text-white text-center p-3">
             @foreach (var level in Model)
             {
-                <a class="btn btn-block btn-dark mb-2 d-inline-block " asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@level.LevelNumber">Level: <b>@level.LevelNumber</b></a>
+                <div class="mb-2 btn-group">
+                    <a class="btn btn-dark" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@level.LevelNumber">Level: <b>@level.LevelNumber </b></a>
+                </div>
             }
         </div>
     </div>

@@ -73,13 +73,13 @@ body {
 .welcome {
     margin:0;
     background-color: rgba(54,213,124,0.7);
-    border-radius:1%;
+    
     height: 100vh;
     
 }
 .startImage{
     height:auto;
-    width:100px;
+    width:200px;
 }
 .levelCompleteImg{
     height:20rem;
@@ -88,6 +88,9 @@ body {
 .notFound-img {
     height: 10rem;
     width: auto;
+}
+.btn:hover {
+    color: lightskyblue;
 }
 
 /*register Form*/
