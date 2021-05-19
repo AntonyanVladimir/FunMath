@@ -22,12 +22,15 @@ namespace FunMath.Controllers
             var claimsPrincipal = httpContext.User;
             _context = context;
         }
-        public IActionResult LoadLevel(int levelNumber, int challengeIndex)
+        public IActionResult LoadLevel(int levelNumber, int challengeIndex, int Points)
         {
 
             Level level = _context.Levels.Include(m => m.Challenges)
                         .FirstOrDefault(m => m.LevelNumber == levelNumber);
             var challenges = level.Challenges;
+
+            if (challenges.Count == 0)
+                return RedirectToAction(nameof(NoChallengesInLevel));
 
             if (challenges.Count > challengeIndex)
             {
@@ -39,14 +42,22 @@ namespace FunMath.Controllers
                     LevelNumber = currentChallenge.LevelNumber,
                     Solution = currentChallenge.Solution,
                     Index = challengeIndex,
-                    LevelChallengesCount = level.Challenges.Count
-
+                    LevelChallengesCount = level.Challenges.Count,
+                    Punkte = Points,
                 };
 
                 return View(vm);
-
             }
-            return RedirectToAction(nameof(LevelCompleted), new { nextLevelNumber = levelNumber + 1 });
+            else
+            {
+                var vm = new LevelCompletedViewModel()
+                {
+                    NextLevelNr = levelNumber + 1,
+                    PossiblePoints = challenges.Count,
+                    ReachedPoints = Points,
+                };
+                return RedirectToAction(nameof(LevelCompleted), vm);
+            }
         }
         [HttpPost]
         public IActionResult CheckAntwort([FromForm] CurrentChallengeViewModel currentChallenge)
@@ -58,19 +69,27 @@ namespace FunMath.Controllers
 
             if (currentChallenge.Solution == currentChallenge.UserAntwort)
             {
-                return RedirectToAction(nameof(LoadLevel), new { levelNumber = currentChallenge.LevelNumber, challengeIndex = ++currentChallenge.Index });
+                return RedirectToAction(nameof(LoadLevel), new { levelNumber = currentChallenge.LevelNumber, challengeIndex = ++currentChallenge.Index, Points = ++currentChallenge.Punkte });
             }
 
             return RedirectToAction(nameof(WrongAnswer), currentChallenge);
         }
-        public IActionResult LevelCompleted(int nextLevelNumber)
+        public IActionResult LevelCompleted(LevelCompletedViewModel viewModel)
         {
-            return View(nextLevelNumber);
+            if (viewModel is null)
+            {
+                throw new ArgumentNullException(nameof(viewModel));
+            }
+
+            return View(viewModel);
         }
         public IActionResult WrongAnswer(CurrentChallengeViewModel currentChallenge)
         {
-
             return View(currentChallenge);
+        }
+        public IActionResult NoChallengesInLevel()
+        {
+            return View();
         }
     }
 }

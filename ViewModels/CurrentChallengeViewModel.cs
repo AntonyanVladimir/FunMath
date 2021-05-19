@@ -14,5 +14,6 @@ namespace FunMath.ViewModels
         public int Index { get; set; }
         public string UserAntwort { get; set; }
         public int LevelChallengesCount { get; set; }
+        public int Punkte { get; set; }
     }
 }

@@ -461,3 +461,4 @@ C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\bin\Debug\net5.0\runtimes\wi
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\bin\Debug\net5.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\bin\Debug\net5.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\bin\Debug\net5.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views\InGame\NoChallengesInLevel.cshtml.g.cs

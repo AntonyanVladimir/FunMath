@@ -5,7 +5,7 @@
 }
 <div class="container mt-4">
     <div class="badge badge-info p-2 float-right">
-        Punkte: @Model.Index von @Model.LevelChallengesCount
+        Punkte: @Model.Punkte von @Model.LevelChallengesCount
     </div>
     <form asp-controller="InGame" asp-action="CheckAntwort">
         <div class="p-5 bg-light border-primary rounded ">
@@ -16,6 +16,7 @@
             <input asp-for="Solution" type="hidden" id="challengeSolution" />
             <input asp-for="Index" type="hidden" />
             <input asp-for="LevelNumber" type="hidden" />
+            <input asp-for="Punkte" type="hidden" />
             <input class="btn btn-success btn-block mt-4" type="submit" value="Check">
         </div>
     </form>

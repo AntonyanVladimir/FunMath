@@ -1,4 +1,4 @@
-﻿@model int
+﻿@model FunMath.ViewModels.LevelCompletedViewModel
 @{
     ViewData["Title"] = "LevelCompleted";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,13 +8,13 @@
 <div class="container mt-4 bg-light vh-100">
     <h3 class="mt-4 mb-4 text-center">Herzlichen Glückwunsch</h3>
     <div class="text-center">
-        <p class="badge badge-success rounded p-2"><b>Punkte: </b>8 von 10</p>
+        <p class="badge badge-success rounded p-2"><b>Punkte: </b>@Model.ReachedPoints von @Model.PossiblePoints</p>
     </div>
     <div class="text-center mt-4">
         <img src="https://cdn.pixabay.com/photo/2021/02/20/03/04/success-6032148_1280.jpg" class="levelCompleteImg" />
     </div>
     <div class="text-center mt-4">
-        <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model">Next Level</a>
+        <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.NextLevelNr">Next Level</a>
     </div>
 </div>
 

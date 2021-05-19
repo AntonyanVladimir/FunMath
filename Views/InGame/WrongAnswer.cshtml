@@ -11,7 +11,7 @@
     </div>
     <div class="text-center mt-4">
         <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.LevelNumber" asp-route-challengeIndex="@Model.Index" >Erneut vesuchen</a>
-        <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.LevelNumber" asp-route-challengeIndex="@(Model.Index+1)">Überspringen</a>
+        <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.LevelNumber" asp-route-challengeIndex="@(Model.Index+1)" asp-route-Points="@Model.Punkte">Überspringen</a>
     </div>
 </div>
 
