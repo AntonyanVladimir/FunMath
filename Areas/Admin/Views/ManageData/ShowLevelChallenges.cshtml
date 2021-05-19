@@ -9,7 +9,7 @@
     <h2>Aufgaben von Level @Model.LevelNumber</h2>
     @if (Model.Challenges.Count == 0)
     {
-        <p class="badge badge-info">Es sind momentan noch keine Aufgaben in diesem Level.</p>
+        <h3 class="badge badge-info">Es sind momentan noch keine Aufgaben in diesem Level.</h3>
     }
     else
     {
@@ -32,10 +32,10 @@
 
             }
         </ul>
-       
-            <a class="nav-link" asp-area="Admin" asp-controller="ManageData" asp-action="AddTask"> <i class="fas fa-plus"></i> AddTask</a>
+
     }
     <div class="mt-4">
+        <a class="btn btn-primary" asp-area="Admin" asp-controller="ManageData" asp-action="AddTask"> <i class="fas fa-plus"></i> AddTask</a> |
         <a class="btn btn-primary" asp-controller="ManageData" asp-action="ShowTasks">Zurück</a>
     </div>
 </div>
