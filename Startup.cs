@@ -35,7 +35,11 @@ namespace FunMath
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ITokenService, TokenService>();
-            services.AddDbContext<TaskContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<TaskContext>(options =>
+            {
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+            });
+            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddControllersWithViews();
 
             services.AddMvc(o => o.EnableEndpointRouting = false);

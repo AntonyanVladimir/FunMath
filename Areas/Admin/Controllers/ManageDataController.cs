@@ -112,6 +112,14 @@ namespace FunMath.Controllers
 
             return RedirectToAction(nameof(ShowLevelChallenges), new { id = levelId });
         }
+        public IActionResult AddNewLevel()
+        {
+            var levelNumber = _context.Levels.Count() + 1;
+            _context.Levels.Add(new Level() { LevelNumber = levelNumber });
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(HomeController.Startseite), "Home", new { area = "" });
+        }
 
     }
 }

@@ -64,7 +64,7 @@ namespace FunMath.Controllers
         [HttpPost]
         public async Task<ActionResult<UserViewModel>> Login([FromForm] LoginViewModel loginViewModel)
         {
-            var user = await _taskContext.AppUsers.SingleOrDefaultAsync(m => m.Username == loginViewModel.Username);
+            var user = await _taskContext.AppUsers.SingleOrDefaultAsync(m => m.Username == loginViewModel.Username.ToLower());
 
             if (user == null)
                 return Unauthorized("Invalid User");
