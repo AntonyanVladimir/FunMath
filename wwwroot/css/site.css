@@ -80,12 +80,12 @@ body {
 
 .startImage {
     height: auto;
-    width: 100vw;
+    width: 80vw;
     opacity:0.8;
 }
 .firstPageImage {
-    height: auto;
-    width: 100vw;
+    height: 20px;
+    width: auto;
 }
 
 .levelCompleteImg {

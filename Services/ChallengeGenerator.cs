@@ -35,6 +35,8 @@ namespace FunMath.Services
     {
         private readonly char[] _operatoren = new char[] { '+', '-', '*' };
         public int[] Values { get; set; }
+        public int ValueCount { get; set; }
+        public int OperatorenCount { get; set; }
         public char[] Operatoren { get; set; }
         //public int HardnessGrad { get; set; }
         public int Minwert { get; set; }
@@ -44,17 +46,15 @@ namespace FunMath.Services
 
         public ChallengeModel(int hardnessGrad)
         {
-            switch (hardnessGrad)
-            {
-                case 1:
-                    {
-                        Operatoren = new char[] { GetOperator(), GetOperator() };
-                        Minwert = 1; Maxwert = 100;
-                        Values = new int[] { GetValue(), GetValue(), GetValue() };
-                        break;
-                    }
-                default: throw new ArgumentException("hardness grad kann momentan nur 1 sein.");
-            }
+            Minwert = 1;
+            Maxwert = hardnessGrad * 20;
+
+            //z.B. bei hardnessGrad = 1 wir haben 3 Zahlen und 2 Operatoren
+            ValueCount = hardnessGrad + 2;
+            OperatorenCount = ValueCount - 1;
+
+            GetOperatoren(OperatorenCount);
+            GetValues(ValueCount);
 
             for (var i = 0; i < Values.Length - 1; i++)
             {
@@ -64,17 +64,31 @@ namespace FunMath.Services
 
             Result = GetAnswer();
         }
-        private char GetOperator()
+        private void GetOperatoren(int count)
         {
             Random random = new Random();
-            int index = random.Next(_operatoren.Length);
-            return _operatoren[index];
+            Operatoren = new char[count];
+            for (int i = 0; i < count; i++)
+            {
+                int index = random.Next(_operatoren.Length);
+                Operatoren[i] = _operatoren[index];
+            }
         }
-        private int GetValue()
+        public void GetValues(int valueCount)
         {
+            Values = new int[valueCount];
+
             Random random = new Random();
-            return random.Next(this.Minwert, this.Maxwert);
+            for (int i = 0; i < valueCount; i++)
+            {
+                var value = random.Next(this.Minwert, this.Maxwert);
+                Values[i] = value;
+            }
         }
+        //private int GetValue()
+        //{
+
+        //}
         private int GetAnswer()
         {
             DataTable dt = new DataTable();

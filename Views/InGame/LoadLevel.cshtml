@@ -18,8 +18,8 @@
             <input asp-for="LevelNumber" type="hidden" />
             <input asp-for="Punkte" type="hidden" />
             <div class="btn-group d-block mt-4">
-            <input class="btn btn-success " type="submit" value="Check"> |
-            <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.LevelNumber" asp-route-challengeIndex="@(Model.Index+1)" asp-route-Points="@Model.Punkte">Überspringen</a>
+            <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.LevelNumber" asp-route-challengeIndex="@(Model.Index+1)" asp-route-Points="@Model.Punkte">Überspringen</a> | 
+            <input class="btn btn-success " type="submit" value="Check"> 
             </div>
 
         </div>
