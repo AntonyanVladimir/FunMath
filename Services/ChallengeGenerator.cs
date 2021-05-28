@@ -17,6 +17,8 @@ namespace FunMath.Services
             for (int i = 0; i < 10; i++)
             {
 
+                //beim Erstellen des Models geben wir nur den Schwierigkeitsgrad ein
+                //und die Aufgabe wird dementsprechend erstellt
                 var challengeModel = new ChallengeModel(1);
 
                 var challenge = new Challenge()
@@ -33,12 +35,11 @@ namespace FunMath.Services
     }
     public class ChallengeModel
     {
-        private readonly char[] _operatoren = new char[] { '+', '-', '*' };
+        private readonly char[] _baseOSperatoren = new char[] { '+', '-', '*' };
         public int[] Values { get; set; }
         public int ValueCount { get; set; }
         public int OperatorenCount { get; set; }
         public char[] Operatoren { get; set; }
-        //public int HardnessGrad { get; set; }
         public int Minwert { get; set; }
         public int Maxwert { get; set; }
         public string ChallengeText { get; set; }
@@ -70,11 +71,11 @@ namespace FunMath.Services
             Operatoren = new char[count];
             for (int i = 0; i < count; i++)
             {
-                int index = random.Next(_operatoren.Length);
-                Operatoren[i] = _operatoren[index];
+                int index = random.Next(_baseOperatoren.Length);
+                Operatoren[i] = _baseOperatoren[index];
             }
         }
-        public void GetValues(int valueCount)
+        private void GetValues(int valueCount)
         {
             Values = new int[valueCount];
 
@@ -85,10 +86,6 @@ namespace FunMath.Services
                 Values[i] = value;
             }
         }
-        //private int GetValue()
-        //{
-
-        //}
         private int GetAnswer()
         {
             DataTable dt = new DataTable();
