@@ -1,5 +1,6 @@
 ﻿using FunMath.Data;
 using FunMath.Models;
+using FunMath.Services;
 using FunMath.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,10 @@ namespace FunMath.Controllers
 
             Level level = _context.Levels.Include(m => m.Challenges)
                         .FirstOrDefault(m => m.LevelNumber == levelNumber);
+            if(level == null)
+            {
+                level = CreateLevelWithChallenges();
+            }
             var challenges = level.Challenges;
 
             if (challenges.Count == 0)
@@ -90,6 +95,21 @@ namespace FunMath.Controllers
         public IActionResult NoChallengesInLevel()
         {
             return View();
+        }
+        private Level CreateLevelWithChallenges()
+        {
+            //count new Level Number
+            var newLevelNr = _context.Levels.Count() + 1;
+            //generate new Level with Challenges
+            var challengeGen = new ChallengeGenerator();
+            var newLevel = challengeGen.GenerateChallengesAndLevel(newLevelNr);
+
+            //add newLevel 
+            _context.Levels.Add(newLevel);
+
+            _context.SaveChanges();
+
+            return newLevel;
         }
     }
 }
