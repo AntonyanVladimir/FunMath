@@ -35,7 +35,7 @@ namespace FunMath.Services
     }
     public class ChallengeModel
     {
-        private readonly char[] _baseOSperatoren = new char[] { '+', '-', '*' };
+        private readonly char[] _baseOperatoren = new char[] { '+', '-', '*' };
         public int[] Values { get; set; }
         public int ValueCount { get; set; }
         public int OperatorenCount { get; set; }

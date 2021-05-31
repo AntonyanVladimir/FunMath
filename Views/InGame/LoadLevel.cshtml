@@ -3,7 +3,13 @@
     ViewData["Title"] = "LoadLevel";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div>
+    <img class="responsive" width="100%" src="~/lib/Images/PlayingLevel.jpg" />
+</div>
 <div class="container mt-4">
+    <div class="mb-4">
+        <a class="btn btn-outline-dark" asp-controller="Home" asp-action="Startseite">Startseite <i class="fas fa-home"></i></a>
+    </div>
     <div class="badge badge-info p-2 float-right">
         Punkte: @Model.Punkte von @Model.LevelChallengesCount
     </div>

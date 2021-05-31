@@ -11,7 +11,9 @@ a.navbar-brand {
 a {
     color: #0366d6;
 }
-
+.gameBackground{
+    background-image:url("../lib/Images/InGame.jpg");
+}
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
@@ -77,8 +79,15 @@ body {
     background-color: rgba(54,213,124,0.3);
     height: 100vh;
 }
-
-.startImage {
+.responsive {
+    
+    height: auto;
+    opacity: 0.8
+}
+.gameBackground {
+  
+}
+/*.startImage {
     height: auto;
     width: 80vw;
     opacity:0.8;
@@ -86,7 +95,7 @@ body {
 .firstPageImage {
     height: 20px;
     width: auto;
-}
+}*/
 
 .levelCompleteImg {
     height: 20rem;

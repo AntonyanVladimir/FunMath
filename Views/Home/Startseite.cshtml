@@ -3,19 +3,24 @@
     ViewData["Title"] = "Startseite";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div>
-    <img class="firstPageImage" src="https://previews.123rf.com/images/wittayayut/wittayayut1610/wittayayut161000053/63862091-schule-mathe-b%C3%BCrobedarf-holzbuchstaben-als-math-wort-mit-mathematik-zeichnung-symbol-math-konzept-.jpg" alt="">
-</div>
-<div class="text-white welcome p-5 text-center">
-    <div class="">
-        <h5 class="card-title"></h5>
-        <div class="text-white text-center p-3">
-            @foreach (var level in Model)
-            {
-                <div class="mb-2 btn-group">
-                    <a class="btn btn-dark" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@level.LevelNumber">Level: <b>@level.LevelNumber </b></a>
-                </div>
-            }
+<div class="gameBackground">
+    <div class="text-white welcome p-5 text-center">
+        <div class="">
+            <h5 class="card-title"></h5>
+            <div class="text-white text-center p-3">
+                @foreach (var level in Model)
+                {
+                    <div class="mb-2 btn-group">
+                        <a class="btn btn-dark" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@level.LevelNumber">Level: <b>@level.LevelNumber </b></a>
+                    </div>
+                }
+                @if (Model.Count == 0)
+                {
+                    <div>
+                        <a class="btn btn-outline-primary" asp-controller="InGame" asp-action="CreateFirstLevel">Start Challenge !</a>
+                    </div>
+                }
+            </div>
         </div>
     </div>
 </div>

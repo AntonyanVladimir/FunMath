@@ -23,6 +23,13 @@ namespace FunMath.Controllers
             var claimsPrincipal = httpContext.User;
             _context = context;
         }
+        public IActionResult CreateFirstLevel()
+        {
+            var firstLevel = CreateLevelWithChallenges();
+            _context.Levels.Add(firstLevel);
+
+            return RedirectToAction(nameof(LoadLevel), new { levelNumber = firstLevel.LevelNumber });
+        }
         public IActionResult LoadLevel(int levelNumber, int challengeIndex, int Points)
         {
 
