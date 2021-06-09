@@ -28,8 +28,6 @@ namespace FunMath.Controllers
         }
         public IActionResult CreateFirstLevel()
         {
-            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
             var firstLevel = CreateLevelWithChallenges();
             _context.Levels.Add(firstLevel);
 
@@ -37,9 +35,6 @@ namespace FunMath.Controllers
         }
         public IActionResult LoadLevel(int levelNumber, int challengeIndex, int Points)
         {
-            IEnumerable<Claim> user = User.Claims.ToList();
-
-            //var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             if (_context.Levels.Count() == 0)
             {
                 var firstLevel = CreateLevelWithChallenges();
@@ -53,9 +48,6 @@ namespace FunMath.Controllers
                 level = CreateLevelWithChallenges();
             }
             var challenges = level.Challenges;
-
-            if (challenges.Count == 0)
-                return RedirectToAction(nameof(NoChallengesInLevel));
 
             if (challenges.Count > challengeIndex)
             {
@@ -112,10 +104,13 @@ namespace FunMath.Controllers
         {
             return View(currentChallenge);
         }
-        public IActionResult NoChallengesInLevel()
+        public IActionResult GenerateNewLevel()
         {
-            return View();
+            CreateLevelWithChallenges();
+
+            return RedirectToAction("ShowTasks", "ManageData", new { Area = "Admin"});
         }
+
         private Level CreateLevelWithChallenges()
         {
             //count new Level Number

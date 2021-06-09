@@ -77,17 +77,13 @@ body {
 
 .welcome {
     background-color: rgba(54,213,124,0.3);
-    height: 100vh;
+    
 }
 .responsive {
     
     height: auto;
     opacity: 0.8
 }
-.gameBackground {
-  
-}
-
 .levelCompleteImg {
     height: 20rem;
     width: auto;

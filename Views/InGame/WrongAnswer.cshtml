@@ -10,7 +10,7 @@
         <img src="https://cdn.pixabay.com/photo/2012/05/07/02/13/cancel-47588_1280.png" class="levelCompleteImg" />
     </div>
     <div class="text-center mt-4">
-        <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.LevelNumber" asp-route-challengeIndex="@Model.Index" >Erneut vesuchen</a>
+        <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.LevelNumber" asp-route-challengeIndex="@Model.Index" asp-route-Points="@Model.Punkte">Erneut vesuchen</a>
         <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.LevelNumber" asp-route-challengeIndex="@(Model.Index+1)" asp-route-Points="@Model.Punkte">Überspringen</a>
     </div>
 </div>

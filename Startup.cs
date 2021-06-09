@@ -39,9 +39,6 @@ namespace FunMath
             {
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
-            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddControllersWithViews();
-
             services.AddMvc(o => o.EnableEndpointRouting = false);
             services.AddCors(o => o.AddPolicy("StandardPolicy", builder =>
             {

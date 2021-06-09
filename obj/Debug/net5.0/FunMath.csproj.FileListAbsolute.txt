@@ -909,7 +909,6 @@ C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views\Home\Startseite.cshtml.g.cs
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views\InGame\LevelCompleted.cshtml.g.cs
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views\InGame\LoadLevel.cshtml.g.cs
-C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views\InGame\NoChallengesInLevel.cshtml.g.cs
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views\InGame\WrongAnswer.cshtml.g.cs
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\vantonyan.DSW\source\repos\FunMath\FunMath\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs

@@ -3,6 +3,7 @@ using FunMath.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,12 +15,15 @@ namespace FunMath.Services
         {
             var level = new Level() { LevelNumber = levelNr };
             //Create 10 levels
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
 
                 //beim Erstellen des Models geben wir nur den Schwierigkeitsgrad ein
                 //und die Aufgabe wird dementsprechend erstellt
-                var challengeModel = new ChallengeModel(1);
+
+                //Schwierigkeitsgrad wird nach jedem 5. Level um Eins erhöht
+                var hardnessGrad = levelNr / 5 + 1;
+                var challengeModel = new ChallengeModel(hardnessGrad);
 
                 var challenge = new Challenge()
                 {
@@ -90,7 +94,7 @@ namespace FunMath.Services
         {
             DataTable dt = new DataTable();
 
-            //aus dem string "2+4*3*4"
+            //aus dem string z.B.: "2+4*3" wird den mathematischen Ausdruck generiert und berechnet.
             int answer = (int)dt.Compute(ChallengeText, "");
 
             return answer;

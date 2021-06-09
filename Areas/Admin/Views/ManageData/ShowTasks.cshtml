@@ -6,29 +6,39 @@
 }
 
 <div class="container welcome">
-    <h2 class="mb-2">Levels</h2>
+    <div class="row">
+        <div class="col mt-4">
+            <div>
+                <h2 class="mb-2 card-header">Levels</h2>
+            </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th scope="col" style="width:13em">Level Number</th>
-                <th scope="col">Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var level in Model)
-            {
-                <tr>
-                    <td>
-                        <a class="btn btn-block btn-info" asp-controller="ManageData" asp-action="ShowLevelChallenges" asp-route-id="@level.Id">Level @level.LevelNumber</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-block btn-danger" asp-area="Admin" asp-controller="ManageData" asp-action="DeleteLevelWithChallenges" asp-route-id="@level.Id">Löschen</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+            <div class="mt-4 mb-4 d-block"><a class="btn btn-primary" asp-area="" asp-controller="InGame" asp-action="GenerateNewLevel">Generate new Level</a></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col" style="width:13em">Level Number</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var level in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a class="btn btn-block btn-info" asp-controller="ManageData" asp-action="ShowLevelChallenges" asp-route-id="@level.Id">Level @level.LevelNumber</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-block btn-danger" asp-area="Admin" asp-controller="ManageData" asp-action="DeleteLevelWithChallenges" asp-route-id="@level.Id">Löschen</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col vh-100">
+
+        </div>
+    </div>
 </div>
 
 

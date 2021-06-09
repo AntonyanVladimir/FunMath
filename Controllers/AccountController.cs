@@ -22,20 +22,10 @@ namespace FunMath.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly ITokenService _tokenService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly TaskContext _taskContext;
-        readonly SignInManager<AppUser> _signInManager;
-
-
         public AccountController(TaskContext tasContext, ITokenService tokenService, IHttpContextAccessor httpContextAccessor)
         {
             _taskContext = tasContext;
-            _tokenService = tokenService;
-            _httpContextAccessor = httpContextAccessor;
-            var userManager = _httpContextAccessor.HttpContext.RequestServices.GetService<AspNetUserManager<AppUser>>();
-            _signInManager = _httpContextAccessor.HttpContext.RequestServices.GetService<SignInManager<AppUser>>();
-
         }
         [HttpPost]
         public async Task<ActionResult<UserViewModel>> Register([FromForm] RegisterViewModel model)
