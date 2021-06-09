@@ -12,7 +12,7 @@ a {
     color: #0366d6;
 }
 .gameBackground{
-    background-image:url("../lib/Images/InGame.jpg");
+  
 }
 .btn-primary {
     color: #fff;
@@ -87,15 +87,6 @@ body {
 .gameBackground {
   
 }
-/*.startImage {
-    height: auto;
-    width: 80vw;
-    opacity:0.8;
-}
-.firstPageImage {
-    height: 20px;
-    width: auto;
-}*/
 
 .levelCompleteImg {
     height: 20rem;

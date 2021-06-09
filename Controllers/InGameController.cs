@@ -16,15 +16,20 @@ namespace FunMath.Controllers
 {
     public class InGameController : Controller
     {
-        readonly TaskContext _context;
+        private readonly TaskContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
         public InGameController(TaskContext context, IHttpContextAccessor httpContextAccessor)
         {
-            var httpContext = httpContextAccessor.HttpContext;
+            _httpContextAccessor = httpContextAccessor;
+            var httpContext = _httpContextAccessor.HttpContext;
             var claimsPrincipal = httpContext.User;
             _context = context;
         }
         public IActionResult CreateFirstLevel()
         {
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
             var firstLevel = CreateLevelWithChallenges();
             _context.Levels.Add(firstLevel);
 
@@ -32,10 +37,18 @@ namespace FunMath.Controllers
         }
         public IActionResult LoadLevel(int levelNumber, int challengeIndex, int Points)
         {
+            IEnumerable<Claim> user = User.Claims.ToList();
+
+            //var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (_context.Levels.Count() == 0)
+            {
+                var firstLevel = CreateLevelWithChallenges();
+                _context.Levels.Add(firstLevel);
+            }
 
             Level level = _context.Levels.Include(m => m.Challenges)
                         .FirstOrDefault(m => m.LevelNumber == levelNumber);
-            if(level == null)
+            if (level == null)
             {
                 level = CreateLevelWithChallenges();
             }

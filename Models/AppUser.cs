@@ -14,6 +14,5 @@ namespace FunMath.Models
         public byte[] PasswordSalt { get; set; }
         public int Age { get; set; }
         public string Role { get; set; }
-
     }
 }
