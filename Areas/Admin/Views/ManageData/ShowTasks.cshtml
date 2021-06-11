@@ -5,19 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="text-center">
+    <h2 class="card-header bg-info">Admin Bereich</h2>
+</div>
 <div class="container welcome">
     <div class="row">
-        <div class="col mt-4">
-            <div>
-                <h2 class="mb-2 card-header">Levels</h2>
-            </div>
+        <div class="col">
 
-            <div class="mt-4 mb-4 d-block"><a class="btn btn-primary" asp-area="" asp-controller="InGame" asp-action="GenerateNewLevel">Generate new Level</a></div>
+            <div class="mt-4 mb-4 d-block"><a class="btn btn-primary" asp-area="" asp-controller="InGame" asp-action="GenerateNewLevel">Neues Level</a></div>
             <table>
                 <thead>
                     <tr>
-                        <th scope="col" style="width:13em">Level Number</th>
-                        <th scope="col">Delete</th>
+                        <th scope="col" style="width:13em">Level Nummer</th>
+                        <th scope="col">Löschen</th>
                     </tr>
                 </thead>
                 <tbody>

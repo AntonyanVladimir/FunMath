@@ -15,7 +15,7 @@
             <input type="password" asp-for="Password" id="password" class="form-control mb-2" placeholder="Passwort" required="" autofocus="" />
             <div class="checkbox mb-3">
                 <label>
-                    <input type="checkbox" value="remember-me"> Remember me
+                    <input type="checkbox" value="remember-me"> Anmeldung speichern
                 </label>
             </div>
             <button class="btn btn-lg btn-outline-dark btn-block mb-2 bg-warning" type="submit">Anmelden</button>
@@ -25,7 +25,7 @@
     </div>
 
     <form class="form-signin align-middle d-none" asp-controller="Account" asp-action="Register" id="registerForm">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Registrieren...</h1>
         <label for="benutzername" class="sr-only">Email address</label>
         <input type="text" asp-for="Username" id="username" class="form-control mb-2" placeholder="Benutzername" required="" autofocus="" />
         <label for="inputPassword" class="sr-only">Password</label>
@@ -34,7 +34,7 @@
         <input type="number" asp-for="Age" id="inputAge" class="form-control mb-2" required="" autofocus="" min="3" max="102" placeholder="Wie alt bist du?" />
         <div class="checkbox mb-3">
             <label>
-                <input type="checkbox" value="remember-me"> Remember me
+                <input type="checkbox" value="remember-me"> Anmeldung speichern
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>

@@ -8,7 +8,7 @@
 </div>
 <div class="container mt-4">
     <div class="mb-4">
-        <a class="btn btn-outline-dark" asp-controller="Home" asp-action="Startseite">Startseite <i class="fas fa-home"></i></a>
+        <a class="btn btn-outline-dark" asp-controller="Home" asp-action="Startseite">Level ändern <i class="fas fa-home"></i></a>
     </div>
     <div class="badge badge-info p-2 float-right">
         Punkte: @Model.Punkte von @Model.LevelChallengesCount
@@ -25,7 +25,7 @@
             <input asp-for="Punkte" type="hidden" />
             <div class="btn-group d-block mt-4">
             <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.LevelNumber" asp-route-challengeIndex="@(Model.Index+1)" asp-route-Points="@Model.Punkte">Überspringen</a> | 
-            <input class="btn btn-success " type="submit" value="Check"> 
+            <input class="btn btn-success " type="submit" value="Prüfen"> 
             </div>
 
         </div>
