@@ -6,13 +6,23 @@
 
 
 <div class="container mt-4 bg-light vh-100">
-    <h3 class="mt-4 mb-4 text-center">Herzlichen Glückwunsch</h3>
     <div class="text-center">
         <p class="badge badge-success rounded p-2"><b>Punkte: </b>@Model.ReachedPoints von @Model.PossiblePoints</p>
     </div>
-    <div class="text-center mt-4">
-        <img src="~/lib/Images/success_bild.jpg" class="levelCompleteImg" />
-    </div>
+    @if (Model.ReachedPoints >= 4)
+    {
+        <h3 class="mt-4 mb-4 text-center">Herzlichen Glückwunsch</h3>
+        <div class="text-center mt-4">
+            <img src="~/lib/Images/success_bild.jpg" class="levelCompleteImg" />
+        </div>
+    }
+    else
+    {
+        <h3 class="mt-4 mb-4 text-center">Versuche es noch einmal</h3>
+        <div class="text-center mt-4">
+            <img src="~/lib/Images/duKannstBesser.png" class="levelCompleteImg" />
+        </div>
+    }
     <div class="text-center mt-4">
         <a class="btn btn-primary" asp-controller="InGame" asp-action="LoadLevel" asp-route-levelNumber="@Model.NextLevelNr">Next Level</a>
     </div>

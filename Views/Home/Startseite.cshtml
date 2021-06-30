@@ -6,16 +6,14 @@
 <div>
     <img class="responsive" src="~/lib/Images/startseite.png" alt="" width="100%">
 </div>
-<div class="card-body py-4 bg-info text-white">
-    
-    Ein ungeübtes Gehirn ist schädlicher für die Gesundheit als ein ungeübter Körper.
+<div id="zitat" class="card-body py-4 bg-info text-white">
+
     <br />
-    <br />
-    <b>George Bernard Shaw</b>
 </div>
+<div id="author" class="font-weight-bold bg-info pl-4 pb-2"></div>
 <div class="container vh-100 welcome">
-    <div class="text-white  p-5 text-center">
-        <div class="text-white text-center p-3">
+    <div class="text-white  p-4 text-center">
+        <div class="text-white text-center p-1">
             @foreach (var level in Model)
             {
                 <div class="mb-2 btn-group">
@@ -33,4 +31,37 @@
 
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const zitate = new Map();
+            zitate.set("George Bernard Shaw", "Ein ungeübtes Gehirn ist schädlicher für die Gesundheit als ein ungeübter Körper.");
+            zitate.set("Platon", "Es ist keine Schande, nichts zu wissen, wohl aber, nichts lernen zu wollen.");
+            zitate.set("Konfuzius", "Wer lernt und nicht denkt, ist verloren! Wer denkt und nicht lernt, ist in großer Gefahr.");
+            zitate.set("Marie von Ebner-Eschenbach", "Wenn es einen Glauben gibt, der Berge versetzen kann, so ist es der Glaube an die eigene Kraft.");
+            zitate.set("James Cook", "Mach nur einmal das, von dem andere sagen, dass du es nicht schaffst, und du wirst nie wieder auf deren Grenzen achten müssen.");
+
+            var currentZitat = getRandomItem(zitate);
+
+            var authorContainer = document.getElementById("author");
+            authorContainer.innerText = currentZitat[0];
+            var zitateContainer = document.getElementById("zitat");
+            zitateContainer.innerText = currentZitat[1];
+            console.log(currentZitat[0] + "::: " + currentZitat[1]);
+
+
+
+            function getRandomItem(zitate) {
+                let items = Array.from(zitate);
+                return items[Math.floor(Math.random() * items.length)];
+            }
+
+
+        });
+
+
+
+    </script>
+}
 
