@@ -10,7 +10,7 @@
 
     <br />
 </div>
-<div id="author" class="font-weight-bold bg-info pl-4 pb-2"></div>
+<div id="author" class="font-weight-bold bg-info pl-4 pb-2 font-italic"></div>
 <div class="container vh-100 welcome">
     <div class="text-white  p-4 text-center">
         <div class="text-white text-center p-1">
@@ -48,16 +48,11 @@
             authorContainer.innerText = currentZitat[0];
             var zitateContainer = document.getElementById("zitat");
             zitateContainer.innerText = currentZitat[1];
-            console.log(currentZitat[0] + "::: " + currentZitat[1]);
-
-
 
             function getRandomItem(zitate) {
                 let items = Array.from(zitate);
                 return items[Math.floor(Math.random() * items.length)];
             }
-
-
         });
 
 
