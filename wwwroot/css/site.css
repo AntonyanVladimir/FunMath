@@ -76,8 +76,7 @@ body {
 }
 
 .welcome {
-    background-color: rgba(54,213,124,0.3);
-    
+    background-color: rgba(186,255,201,0.45);
 }
 .responsive {
     
@@ -97,5 +96,8 @@ body {
 .btn:hover {
     color: lightskyblue;
 }
-
+.socialMedia{
+    width:25px;
+    height:25px;
+}
 /*register Form*/

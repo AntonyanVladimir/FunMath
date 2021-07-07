@@ -4,14 +4,17 @@
     ViewData["Title"] = "AddTask";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="welcome p-5">
-    <h2>Add Aufgaben</h2>
+<div class="welcome">
+<div class="text-center">
+    <h2 class="h1 home-title text-dark bg-info p-2">Aufgabe Erstellen</h2>
+</div>
+<div class="p-4">
     <form method="post" asp-controller="ManageData" asp-action="SaveTask">
-        Level: <select asp-items="Model.Levels" name="levelNumber" class="form-control"></select> <br>
-        ChallengeText: <textarea type="text" name="challengeText" class="form-control"></textarea><br><br>
-        Solution: <input type="text" name="solution" class="form-control" />
-        <input class="btn btn-primary mt-3" type="submit" value="Task hinzufügen" autocomplete="off">
+        Level Nummer: <select asp-items="Model.Levels" name="levelNumber" class="form-control"></select> <br>
+        Aufgabenstellung: <textarea type="text" name="challengeText" class="form-control" rows="5"></textarea><br><br>
+        Lösung: <input type="text" name="solution" class="form-control" autocomplete="off"/>
+        <input class="btn btn-primary mt-3" type="submit" value="Hinzufügen">
     </form>
+</div>
 </div>
 
